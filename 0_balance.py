@@ -1,4 +1,11 @@
 import os 
+
+for foldername in ["dataset_balanced", "dataset_balanced_augmented", "dataset_split"]:
+    import shutil
+    if os.path.exists(foldername):
+        shutil.rmtree(foldername)
+
+
 dataset_folder = "dataset"
 total = 0 
 for foldername in os.listdir(dataset_folder):
@@ -7,7 +14,7 @@ for foldername in os.listdir(dataset_folder):
     print (foldername, len(os.listdir(folderpath)))
 
 average = int(total/len(os.listdir(dataset_folder)))
-
+print ("average", average)
 import random 
 def get_random_elements(lst, n):
     if len(lst) < n:
