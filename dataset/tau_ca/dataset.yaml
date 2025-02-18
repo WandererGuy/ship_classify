@@ -1,0 +1,6 @@
+train: NAM_ALL_REFINED\YOLODataset/images/train/
+val: NAM_ALL_REFINED\YOLODataset/images/val/
+
+nc: 1
+
+names: ['boat']
