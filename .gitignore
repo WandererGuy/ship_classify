@@ -2,6 +2,7 @@ env
 dataset.rar
 dataset_balanced_augmented
 dataset_balanced
+dataset_balanced/tau_ca/dataset.yaml
 dataset
 dataset_split
 checkpoints
