@@ -13,6 +13,7 @@ given a folder ./dataset and file ./class.yaml
 the workflows sequentially balance datastet -> augment dataset -> split into train/val/test -> train resnet on train dataset -> inference on 1 image 
 ## prepare
 folder ./dataset has structure like 
+```
 dataset/
 ├── class_1/
 │   ├── image_1.jpg
@@ -22,7 +23,7 @@ dataset/
 │   ├── imgae_2.jpg
 └── class_3/
 ...
-
+```
 in ./class.yaml, replace classes with your own classes name 
 
 ## running
