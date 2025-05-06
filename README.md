@@ -1,7 +1,7 @@
 install latest torch (currently 12.6)
 ```
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126
-
+```
 install ultralytics for the cuda-toolkits, to enable using cuda 
 ```
 pip install ultralytics

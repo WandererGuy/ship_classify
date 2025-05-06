@@ -1,6 +1,4 @@
 env
-*.pth
-*.jpg
 dataset.rar
 dataset_balanced_augmented
 dataset_balanced
@@ -8,3 +6,5 @@ dataset
 dataset_split
 checkpoints
 test_images
+*.pth
+*.jpg
