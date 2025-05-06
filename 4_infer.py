@@ -34,34 +34,50 @@ def infer(image_path, model, device):
 
     return final_pred  # Return the predicted class index
 
-image_path = r"D:\WORK\ship_classify\dataset_split\test\tau_ca\039a425d-0a00-43ef-9ab3-79bbfe01969f.jpg"
+if __name__ == "__main__":
+    import argparse
+    # 1. Create the parser
+    parser = argparse.ArgumentParser(
+        description="Example script that takes one variable from the terminal"
+    )
 
-# Load the pre-trained ResNet-18 model
-model = models.resnet18(pretrained=True)
-# Load the state_dict
-num_classes = 4
-model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
+    # 2. Add a positional argument called "name"
+    parser.add_argument(
+        "--image_path",            # for an optional arg you’d use "--name" instead
+        help="The name you want to pass in",
+        type=str
+    )
 
-model.load_state_dict(torch.load('checkpoints/model.pth'))
+    # 3. Parse the command-line arguments
+    args = parser.parse_args()
+    image_path = args.image_path
 
-# Set the model to evaluation mode (important for inference)
-model.eval()
+    # Load the pre-trained ResNet-18 model
+    model = models.resnet18(pretrained=True)
+    # Load the state_dict
+    num_classes = 4
+    model.fc = torch.nn.Linear(model.fc.in_features, num_classes)
 
-device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-print (device)
-model.to(device)
+    model.load_state_dict(torch.load('checkpoints/model.pth'))
 
-# Load the trained model (assuming it's saved and restored, otherwise use the code you already have)
-model.eval()  # Set the model to evaluation mode
+    # Set the model to evaluation mode (important for inference)
+    model.eval()
 
-# Define the same transformations used during training
-transform = transforms.Compose([
-    transforms.Resize(256),
-    transforms.CenterCrop(224),
-    transforms.ToTensor(),
-    transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
-])
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    print (device)
+    model.to(device)
+
+    # Load the trained model (assuming it's saved and restored, otherwise use the code you already have)
+    model.eval()  # Set the model to evaluation mode
+
+    # Define the same transformations used during training
+    transform = transforms.Compose([
+        transforms.Resize(256),
+        transforms.CenterCrop(224),
+        transforms.ToTensor(),
+        transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])
 
 
-# Example usage
-final_pred = infer(image_path, model, device)
+    # Example usage
+    final_pred = infer(image_path, model, device)
